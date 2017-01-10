@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if warning %}
+{{ warning }}
+
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">LOgin</button>
+</form>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for cart in cart_list%}
+    {{ cart.item.item_description }}
+    {% endfor %}
+
+{% endblock %}
