@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from django.views.generic import *
 from .models import Cart
 from item.models import Item
 # Create your views here.
+
 class Cart_List(ListView):
     model = Cart
     context_object_name = 'cart_list'
@@ -14,11 +15,17 @@ class Cart_List(ListView):
         # Call the base implementation first to get a context
         context = super(Cart_List, self).get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        user=self.request.user
-
-       # if user :
-
-
             #context['item_list'] = item_list
 
         return context
+
+class Cart_Create(CreateView):
+    model = Cart
+    fields = ['user','item','qty','item_price']
+
+def addtocart(request):
+    if request.method=='POST':
+        item=request.POST.get('item')
+        user=request.user
+        size=request.POST.get('size')
+        return HttpResponse('added')

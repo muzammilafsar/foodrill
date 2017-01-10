@@ -7,8 +7,7 @@ class Cart(models.Model):
     item=models.ForeignKey(Item,on_delete=models.CASCADE)
     qty=models.IntegerField(default=0)
     item_price=models.FloatField(default=0.0)
-    item_name=models.CharField(max_length=30)
-    item_description=models.TextField(max_length=100,default='this is the description')
+    size=models.CharField(default=0,max_length=10)
 
 
     def __str__(self):

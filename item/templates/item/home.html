@@ -9,7 +9,7 @@
 
 
             <div class="panel-heading">
-              <a href="{{ item.id }}/">{{item.item_name}}</a>
+              <a href="{% url 'item_detail' item.id %}">{{item.item_name}}</a>
             </div>
 
             <div class="panel-body"><img src="{{ item.item_url }}" class="img-responsive img-rounded" /></div>
@@ -17,8 +17,14 @@
 
                     {{item.item_price}}
 
-                <form method="POST" action="/home/{{item.id}}">
+                <form method="POST" action="{% url 'addtocart' %}">
                   {% csrf_token %}
+                    
+                    <input type="radio" id="size" name="size" value="sml">
+                    <input type="radio" id="size" name="size" value="md">
+                    <input type="radio" id="size" name="size" value="lrg">
+
+
                   <button type="submit" class="btn btn-default pull-right">Add</button>
 
                 </form>

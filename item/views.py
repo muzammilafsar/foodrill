@@ -21,7 +21,7 @@ class Item_list(ListView):
         user=self.request.user
         Item_in_cart=Cart.objects.filter(user=user)
         if user :
-            context['cart_items'] = cart_items(self.request)
+                context['cart_items'] = cart_items(self.request)
         return context
 
 @login_required
